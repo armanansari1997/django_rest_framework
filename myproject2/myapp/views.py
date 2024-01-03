@@ -1,13 +1,8 @@
 from django.shortcuts import render, HttpResponse
-from django.http import JsonResponse
 from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.response import Response
-
-# from django.views.decorators.csrf import csrf_exempt
-
-# from rest_framework.parsers import JSONParser
 
 from .models import Employee
 from .serializers import EmployeeSerializer, UserSerializer
