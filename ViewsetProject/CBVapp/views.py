@@ -1,14 +1,19 @@
-from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.viewsets import ViewSet
-from .models import Course
-from .serializers import CourseSerializer
+from rest_framework.viewsets import ViewSet, ModelViewSet
 from django.shortcuts import get_object_or_404
 
-# Create your views here.
+from .models import Course
+from .serializers import CourseSerializer
 
-class CourseListView(ViewSet):
+# Create your views here.
+class CourseViewSet(ModelViewSet):
+  queryset = Course.objects.all()
+  serializer_class = CourseSerializer
+  
+  
+"""
+class CourseViewSet(ViewSet):
   def list(self, request):
     course = Course.objects.all()
     serializer = CourseSerializer(course, many=True)
@@ -39,3 +44,4 @@ class CourseListView(ViewSet):
     course = get_object_or_404(course, pk=pk)
     course.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+"""
